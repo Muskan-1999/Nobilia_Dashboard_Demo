@@ -1,13 +1,26 @@
-<div class="flex items-center justify-between px-4 py-2 bg-white shadow">
+<div class="flex items-center justify-between w-full px-4 py-2 bg-white shadow border-b border-gray-200">
+    {{-- Left section: Logo and Updated Visitors --}}
     <div class="flex items-center gap-4">
-    <img src="{{ asset('images/nobilia-logo.png') }}" alt="Logo" class="h-10 align-middle">
-        <span class="text-sm font-medium text-gray-700">Updated visitors: 0</span>
+        <img src="{{ asset('images/nobilia-logo.png') }}" alt="Logo" class="h-10 align-middle">
+        
+        {{-- Vertical divider and text --}}
+        <div class="pl-4 ml-2 border-l border-gray-200">
+            <span class="text-sm font-medium text-gray-700">Updated visitors: 0</span>
+        </div>
     </div>
+
+    {{-- Center date --}}
     <div class="text-center text-sm font-medium text-gray-700">
         {{ \Carbon\Carbon::now()->format('l, F j, Y') }}
     </div>
+
+    {{-- Right: User info and logout --}}
     <div class="flex items-center gap-4">
         <span class="text-sm font-medium text-gray-700">User: {{ Auth::user()->name }}</span>
+
+        {{-- Vertical divider --}}
+        <div class="h-5 border-l border-gray-300"></div>
+
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit" class="flex items-center gap-1 px-3 py-1 text-white bg-red-600 rounded-full hover:bg-red-700 text-sm">
